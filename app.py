@@ -20,7 +20,7 @@ class App(tk.Tk):
         self.title_font = tkfont.Font(
             family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry("500x500")
-        self.title("Group 24 Database GUI")
+        self.title("Sophisticated Group 24 Database GUI")
 
         # the container is where we'll stack a bunch of frames
         # on top of each other, then the one we want visible

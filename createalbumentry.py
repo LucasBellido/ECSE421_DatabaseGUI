@@ -33,6 +33,7 @@ class CreateAlbumEntry(tk.Frame):
         goBackbutton.pack()
 
     def createAlbum(self):
-        createAlbumEntry(self.albumIDText.get(),
-                         self.albumnametext.get())
-        self.controller.show_frame("AlbumsPage", "updatePage")
+        error = createAlbumEntry(self.albumIDText.get(),
+                                 self.albumnametext.get())
+        if not error:
+            self.controller.show_frame("AlbumsPage", "updatePage")

@@ -11,13 +11,15 @@ class AlbumsPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="Albums Page",
-                         font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
-        button = tk.Button(self, text="Return to Main Menu",
-                           command=lambda: controller.show_frame("StartPage"))
-        button.pack()
+        AlbumTitleLabel = tk.Label(self, text="Albums Page",
+                                   font=controller.title_font)
+        AlbumTitleLabel.pack(side="top", fill="x", pady=10)
+        returnMenubutton = tk.Button(self, text="Return to Main Menu",
+                                     command=lambda: controller.show_frame("StartPage"))
+        returnMenubutton.pack()
 
+        labelTitle = tk.Label(self, text="(Album ID, Album Name)")
+        labelTitle.pack()
         # call getAlbums from databasequeries.py and place them in a scrollable list box
         scrollbar = tk.Scrollbar(self)
         scrollbar.pack(side="right", fill="y")

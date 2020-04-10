@@ -109,6 +109,7 @@ def createAlbumEntry(albumID, albumName):
         print(error)
         messagebox.showerror(
             "Error creating album", "Error: {}".format(error))
+        return error
     finally:
         if conn is not None:
             conn.close()
