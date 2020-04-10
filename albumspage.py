@@ -30,7 +30,8 @@ class AlbumsPage(tk.Frame):
         modifyButton = tk.Button(
             self, text="Modify entry", command=lambda: self.modifyEntry())
         modifyButton.pack()
-        createButton = tk.Button(self, text="Create entry")
+        createButton = tk.Button(
+            self, text="Create entry", command=lambda: controller.show_frame("CreateAlbumEntry"))
         createButton.pack()
         # USE "self.label = ..." instead of "label = ..." when initialize the label to be able to access it outside of this function,
         # since label not globally defined so would be out of scope if tried to modify the label in modifyEntry().

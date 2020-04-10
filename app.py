@@ -5,7 +5,7 @@ from startpage import StartPage
 from albumspage import AlbumsPage
 from pagetwo import PageTwo
 from specificalbumentry import SpecificAlbumEntry
-
+from createalbumentry import CreateAlbumEntry
 from databasequeries import *
 
 
@@ -31,7 +31,7 @@ class App(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, AlbumsPage, PageTwo, SpecificAlbumEntry):
+        for F in (StartPage, AlbumsPage, PageTwo, SpecificAlbumEntry, CreateAlbumEntry):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame

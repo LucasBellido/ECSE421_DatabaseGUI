@@ -74,13 +74,41 @@ def modifyAlbumEntry(albumID, albumName):
 
         conn.commit()
         messagebox.showerror(
-            "Confirmation", "Successfully modified album to:{}".format(albumName))
+            "Confirmation", "Successfully modified album to\n: {}".format(albumName))
         cur.close()
 
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
         messagebox.showerror(
-            "Confirmation", "Error: {}".format(error))
+            "Error modifying Album", "Error: {}".format(error))
+    finally:
+        if conn is not None:
+            conn.close()
+
+
+def createAlbumEntry(albumID, albumName):
+    try:
+        conn = psycopg2.connect(
+            host="comp421.cs.mcgill.ca",
+            user="cs421g24",
+            password="databaes2020",
+            database="cs421")
+        cur = conn.cursor()
+        print(albumID)
+        print(albumName)
+
+        cur.execute("insert into album(aid,aname) values('{}', '{}');".format(
+            str(albumID), albumName))
+
+        conn.commit()
+        messagebox.showerror(
+            "Confirmation", "Successfully created album: {}".format(albumName))
+        cur.close()
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+        messagebox.showerror(
+            "Error creating album", "Error: {}".format(error))
     finally:
         if conn is not None:
             conn.close()
