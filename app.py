@@ -3,11 +3,12 @@ from tkinter import font as tkfont
 
 from startpage import StartPage
 from albumspage import AlbumsPage
-from pagetwo import PageTwo
+from memoriespage import MemoriesPage
 from specificalbumentry import SpecificAlbumEntry
 from createalbumentry import CreateAlbumEntry
+from memorycomments import MemoryComments
+from modifycomment import ModifyComment
 from databasequeries import *
-
 
 # this is the main app class that defines which files will be used. Need to go to each file on its own to see the content
 
@@ -19,7 +20,7 @@ class App(tk.Tk):
 
         self.title_font = tkfont.Font(
             family='Helvetica', size=18, weight="bold", slant="italic")
-        self.geometry("500x500")
+        self.geometry("800x500")
         self.title("Sophisticated Group 24 Database GUI")
 
         # the container is where we'll stack a bunch of frames
@@ -31,7 +32,7 @@ class App(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, AlbumsPage, PageTwo, SpecificAlbumEntry, CreateAlbumEntry):
+        for F in (StartPage, AlbumsPage, MemoriesPage, SpecificAlbumEntry, CreateAlbumEntry, MemoryComments, ModifyComment):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame

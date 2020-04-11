@@ -13,8 +13,8 @@ class StartPage(tk.Frame):
 
         AlbumsPageButton = tk.Button(self, text="View/Edit/Create Albums",
                                      command=lambda: controller.show_frame("AlbumsPage"))
-        button2 = tk.Button(self, text="Go to Page Two",
-                            command=lambda: controller.show_frame("PageTwo"))
+        button2 = tk.Button(self, text="View/Edit Memories and Comments",
+                            command=lambda: controller.show_frame("MemoriesPage"))
         exitButton = tk.Button(self, text="Exit Peacefully",
                                command=lambda: self.quit())
         AlbumsPageButton.pack()
