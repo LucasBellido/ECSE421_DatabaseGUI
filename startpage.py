@@ -15,8 +15,15 @@ class StartPage(tk.Frame):
                                      command=lambda: controller.show_frame("AlbumsPage"))
         button2 = tk.Button(self, text="View/Edit Memories and Comments",
                             command=lambda: controller.show_frame("MemoriesPage"))
+        button3 = tk.Button(self, text="View/Edit Users",
+                            command=lambda: controller.show_frame("UsersPage"))
+        button4 = tk.Button(self, text="View/Edit Social Circles",
+                            command=lambda: controller.show_frame("SocialCirclePage"))
+        
         exitButton = tk.Button(self, text="Exit Peacefully",
                                command=lambda: self.quit())
         AlbumsPageButton.pack()
         button2.pack()
+        button3.pack()
+        button4.pack()
         exitButton.pack()

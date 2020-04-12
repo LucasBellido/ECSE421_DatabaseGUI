@@ -2,12 +2,14 @@ import tkinter as tk
 from tkinter import font as tkfont
 
 from startpage import StartPage
+from userspage import UsersPage
 from albumspage import AlbumsPage
 from memoriespage import MemoriesPage
 from specificalbumentry import SpecificAlbumEntry
 from createalbumentry import CreateAlbumEntry
 from memorycomments import MemoryComments
 from modifycomment import ModifyComment
+from createuserpage import CreateUser
 from databasequeries import *
 
 # this is the main app class that defines which files will be used. Need to go to each file on its own to see the content
@@ -32,7 +34,7 @@ class App(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, AlbumsPage, MemoriesPage, SpecificAlbumEntry, CreateAlbumEntry, MemoryComments, ModifyComment):
+        for F in (StartPage, AlbumsPage, MemoriesPage, SpecificAlbumEntry, CreateAlbumEntry, MemoryComments, ModifyComment, UsersPage, CreateUser):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame

@@ -2,6 +2,35 @@ import psycopg2
 from tkinter import messagebox
 
 
+def getUsers():
+
+    try:
+        lst = []
+        conn = psycopg2.connect(
+            host="comp421.cs.mcgill.ca",
+            user="cs421g24",
+            password="databaes2020",
+            database="cs421")
+
+        cur = conn.cursor()
+        cur.execute("SELECT * from mainuser order by uemail;")
+        print("The number of users: ", cur.rowcount)
+        row = cur.fetchone()
+
+        while row is not None:
+            lst.append(row)
+            row = cur.fetchone()
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+        messagebox.showerror(
+            "Error", "Error connecting to database. Please close and restart")
+    finally:
+        if conn is not None:
+            conn.close()
+            return lst
+
+
 def getAlbums():
 
     try:
@@ -111,6 +140,32 @@ def createAlbumEntry(albumID, albumName):
         if conn is not None:
             conn.close()
 
+def createUserEntry(email, fname, lname, bday, address, desc, picture):
+    try:
+        conn = psycopg2.connect(
+            host="comp421.cs.mcgill.ca",
+            user="cs421g24",
+            password="databaes2020",
+            database="cs421")
+        cur = conn.cursor()
+        
+
+        cur.execute("insert into mainuser(uemail,ufirstname, ulastname, ubirthdate, uaddress, udescription, upicture) values('{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(
+            email, fname, lname, bday, address, desc, picture))
+
+        conn.commit()
+        messagebox.showerror(
+            "Confirmation", "Successfully created user: {}".format(email))
+        cur.close()
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+        messagebox.showerror(
+            "Error creating user", "Error: {}".format(error))
+        return error
+    finally:
+        if conn is not None:
+            conn.close()
 
 def getMemories():
     try:
